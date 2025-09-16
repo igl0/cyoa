@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+ï»¿import React, { useState } from 'react';
 import './App.css';
 
 const itemVariants = {
   Sneak: ['Invisibility Cloak', 'Stealth Ring', 'Sneaky Sneakers'],
-  Charm: ['Silver Tongue Potion', 'Charmer’s Brooch', 'Glamour Gloves'],
+  Charm: ['Silver Tongue Potion', 'Charmerâ€™s Brooch', 'Glamour Gloves'],
   Break: ['Power Gauntlets', 'Titan Belt', 'Crusher Boots']
 };
 
@@ -75,7 +75,7 @@ const storyNodes = [
   },
   {
     headline: 'The Dragon\'s Lair',
-    text: prev => `Finally, you stand before the dragon’s lair. The final challenge awaits!`,
+    text: prev => `Finally, you stand before the dragonâ€™s lair. The final challenge awaits!`,
     choices: [
       { label: 'Sneak into the lair', stat: 'Sneak' },
       { label: 'Talk to the dragon', stat: 'Charm' },
@@ -90,7 +90,7 @@ function getItem(stat, nodeIdx) {
 }
 
 function App() {
-  const [step, setStep] = useState('profile');
+  const [step, setStep] = useState('landing'); // Start with landing page
   const [name, setName] = useState('');
   const [message, setMessage] = useState('');
   const [dead, setDead] = useState(false);
@@ -103,6 +103,19 @@ function App() {
   const [playerStats, setPlayerStats] = useState({ Sneak: 0, Charm: 0, Break: 0 });
   const [choiceHistory, setChoiceHistory] = useState([]);
   const [deathNode, setDeathNode] = useState(null);
+
+  // Landing page
+  if (step === 'landing') {
+    return (
+      <div className="app-container">
+        <h2>Hej Thea!</h2>
+        <p>Jeg har lavet et lille spil til din togtur ðŸš‚</p>
+        <div className="button-group">
+          <button onClick={() => setStep('profile')}>Start spillet</button>
+        </div>
+      </div>
+    );
+  }
 
   // Handle profile creation
   const handleCreateProfile = () => {
@@ -287,7 +300,7 @@ function App() {
           lysandraComment = `Lysandra: "Bandits, huh? After '${lastChoice}', I hope you kept your wallet. What's your next move?"`;
           break;
         case 6:
-          lysandraComment = `Lysandra: "The dragon's lair! After '${lastChoice}', I hope you're not out of breath. This is your moment—how will you face the dragon?"`;
+          lysandraComment = `Lysandra: "The dragon's lair! After '${lastChoice}', I hope you're not out of breath. This is your momentâ€”how will you face the dragon?"`;
           break;
         default:
           lysandraComment = `Lysandra: "After you chose to '${lastChoice}', I have just the thing for you next! How do you want to proceed?"`;
